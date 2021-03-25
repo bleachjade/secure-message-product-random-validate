@@ -1,5 +1,6 @@
 package ku.message.dto;
 
+import ku.message.validation.ValidPassword;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -15,12 +16,11 @@ public class SignupDto {
     private String username;
 
     @NotBlank
-    @Size(min=12, max=128)
+    @ValidPassword
     private String password;
 
     @NotBlank(message = "First name is required")
-    @Pattern(regexp = "^[a-zA-Z]+$",
-            message = "First name can only contain letters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name can only contain letters")
     private String firstName;
 
     @NotBlank
@@ -32,3 +32,4 @@ public class SignupDto {
 
     private String role;
 }
+
